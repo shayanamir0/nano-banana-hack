@@ -10,7 +10,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*', // use env var instead of hardcoding localhost
+  origin: process.env.FRONTEND_URL, // use env var instead of hardcoding localhost
   credentials: true
 }));
 
