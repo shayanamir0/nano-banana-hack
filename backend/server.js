@@ -9,10 +9,19 @@ dotenv.config();
 const app = express();
 
 // Middleware
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  'http://localhost:3000'
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL, // use env var instead of hardcoding localhost
-  credentials: true
+  origin: allowedOrigins,
+  credentials: true,
 }));
+// app.use(cors({
+//   origin: process.env.FRONTEND_URL, // use env var instead of hardcoding localhost
+//   credentials: true
+// }));
 
 app.use(express.json({ limit: '25mb' }));
 app.use(express.urlencoded({ limit: '25mb', extended: true }));
